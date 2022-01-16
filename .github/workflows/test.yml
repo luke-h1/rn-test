@@ -1,0 +1,14 @@
+name: e2e tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: luke-h1/checkout@v2
+
+      - name: Cypress run
+        uses: luke-h1/github-action@v2
+        with:
+          start: yarn web
+          wait-on: 'http://localhost:19006'
