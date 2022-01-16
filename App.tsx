@@ -29,9 +29,9 @@ const App = () => {
   }, []);
 
   return (
-    <View style={{ flex: 1, padding: 24 }}>
+    <View style={{ flex: 1, padding: 24, marginVertical: 60 }}>
       {loading ? (
-        <ActivityIndicator />
+        <ActivityIndicator testID='loading' />
       ) : (
         <FlatList
           accessibilityLabel="users"
@@ -47,13 +47,4 @@ const App = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 export default App;
