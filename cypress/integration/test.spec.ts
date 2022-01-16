@@ -1,6 +1,11 @@
-it("it works", () => {
+it("loads a list of users", () => {
+  cy.intercept("/users").as("users");
   cy.visit("/");
-  cy.contains("Open up App.tsx to start working on your app!").should(
-    "be.visible"
-  );
+  cy.wait("@users")
+    .its("response.body")
+    .should("be.an", "Array")
+    .and("have.length.gt", 5)
+    .then((users) => {
+      cy.get("[data-testid=user]").should("have.length", users.length);
+    });
 });
