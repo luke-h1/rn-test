@@ -20,9 +20,8 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("https://jsonplaceholder.cypress.io/users");
-      const data = await res.json();
-      setUsers(data);
+      fetch("https://jsonplaceholder.cypress.io/users").then((res) => res.json()).then((result) => setUsers(result))
+      .catch(e => console.error(e))
       setLoading(false)
     };
     fetchData();
@@ -31,14 +30,14 @@ const App = () => {
   return (
     <View style={{ flex: 1, padding: 24, marginVertical: 60 }}>
       {loading ? (
-        <ActivityIndicator testID='loading' />
+        <ActivityIndicator testID='loading' accessibilityLabel="loading users" />
       ) : (
         <FlatList
           accessibilityLabel="users"
           data={users}
           keyExtractor={({ id }, index) => String(id)}
           renderItem={({ item }) => (
-            <Text testID="user">
+            <Text testID="user" accessibilityLabel="user">
               {item.name} | {item.email}
             </Text>
           )}
