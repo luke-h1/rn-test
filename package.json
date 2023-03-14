@@ -12,7 +12,7 @@
     "cy:run": "NODE_ENV=TEST ./node_modules/.bin/cypress run"
   },
   "dependencies": {
-    "expo": "~44.0.0",
+    "expo": "~44.0.6",
     "expo-status-bar": "~1.2.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
